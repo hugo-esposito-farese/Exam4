@@ -10,4 +10,4 @@ def py_room_scheduler(meetings: list[list[int]]) -> dict[str, Any]:
                 break
         else:
             rooms.append([m])
-    return {"total_rooms": len(rooms), "schedule": rooms}
+    return {"rooms_needed": len(rooms), "room_assignments": dict(enumerate(rooms))}

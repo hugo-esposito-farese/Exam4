@@ -1,6 +1,6 @@
 import copy, heapq, random, unittest
 from common import *
-from py_room_scheduler import py_room_scheduler as f
+from py_room_scheduler_site_format import py_room_scheduler_site_format as f
 
 
 def min_rooms(ms):

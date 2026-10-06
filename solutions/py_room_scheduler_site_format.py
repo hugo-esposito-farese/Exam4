@@ -1,7 +1,7 @@
 from typing import Any
 
 
-def meeting(meetings: list[list[int]]) -> dict[str, Any]:
+def py_room_scheduler_site_format(meetings: list[list[int]]) -> dict[str, Any]:
     rooms = []
     for m in sorted(meetings, key=lambda m: m[0]):
         for r in rooms:
@@ -10,4 +10,4 @@ def meeting(meetings: list[list[int]]) -> dict[str, Any]:
                 break
         else:
             rooms.append([m])
-    return {"rooms_needed": len(rooms), "room_assignments": dict(enumerate(rooms))}
+    return {"total_rooms": len(rooms), "schedule": rooms}
