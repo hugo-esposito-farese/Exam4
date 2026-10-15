@@ -62,6 +62,19 @@ class T(unittest.TestCase):
         self.assertEqual(w, ["b", "a", "b"])
         self.assertIs(type(r), list)
 
+    def test_random_vs_oracle(self):
+        for seed in range(500):
+            rnd = random.Random(seed)
+            ws = [chr(rnd.choice([65, 97, 98, 233, 0x4e2d])) * rnd.randint(0, 4) for _ in range(rnd.randint(0, 25))]
+            p = rnd.choice(ws + [""]) [:rnd.randint(0, 2)] if ws else ""
+            self.assertEqual(f(ws, p), sorted({w for w in ws if w.startswith(p)}), (ws, p))
+
+    def test_long_words_and_many_words(self):
+        w = "a" * 500
+        self.assertEqual(f([w, w + "b"], "a" * 499), [w, w + "b"])
+        ws = [str(i) for i in range(20000)]
+        self.assertEqual(f(ws, "19"), sorted(x for x in ws if x.startswith("19")))
+
     def test_random_vs_trie(self):
         for seed in range(500):
             rnd = random.Random(seed)
