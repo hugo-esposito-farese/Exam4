@@ -1,0 +1,198 @@
+[
+ {
+  "name": "prefix_dictionary",
+  "file": "prefix_dictionary.py",
+  "examples": [
+   {
+    "input": "d = PrefixDictionary(); d.insert(\"apple\"); d.search(\"apple\")",
+    "output": "True"
+   },
+   {
+    "input": "d = PrefixDictionary(); d.insert(\"apple\"); d.search(\"app\")",
+    "output": "False"
+   },
+   {
+    "input": "d = PrefixDictionary(); d.insert(\"apple\"); d.starts_with(\"app\")",
+    "output": "True"
+   },
+   {
+    "input": "d = PrefixDictionary(); d.insert(\"apple\"); d.insert(\"app\"); d.search(\"app\")",
+    "output": "True"
+   }
+  ]
+ },
+ {
+  "name": "pack_strings",
+  "file": "pack_strings.py",
+  "examples": [
+   {
+    "input": "unpack(pack([\"hello\", \"world\"]))",
+    "output": "[\"hello\", \"world\"]"
+   },
+   {
+    "input": "unpack(pack([]))",
+    "output": "[]"
+   },
+   {
+    "input": "unpack(pack([\"\"]))",
+    "output": "[\"\"]"
+   },
+   {
+    "input": "unpack(pack([\"42\", \"exam#net\", \"level:6\"]))",
+    "output": "[\"42\", \"exam#net\", \"level:6\"]"
+   }
+  ]
+ },
+ {
+  "name": "task_order",
+  "file": "task_order.py",
+  "examples": [
+   {
+    "input": "task_order(2, [[1, 0]])",
+    "output": "[0, 1]"
+   },
+   {
+    "input": "task_order(4, [[1, 0], [2, 0], [3, 1], [3, 2]])",
+    "output": "[0, 1, 2, 3]"
+   },
+   {
+    "input": "task_order(2, [[0, 1], [1, 0]])",
+    "output": "[]"
+   },
+   {
+    "input": "task_order(3, [])",
+    "output": "[0, 1, 2]"
+   }
+  ]
+ },
+ {
+  "name": "redundant_link",
+  "file": "redundant_link.py",
+  "examples": [
+   {
+    "input": "redundant_link([[1, 2], [1, 3], [2, 3]])",
+    "output": "[2, 3]"
+   },
+   {
+    "input": "redundant_link([[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]])",
+    "output": "[1, 4]"
+   },
+   {
+    "input": "redundant_link([[1, 4], [3, 4], [1, 3], [1, 2], [4, 5]])",
+    "output": "[1, 3]"
+   }
+  ]
+ },
+ {
+  "name": "union_find_system",
+  "file": "union_find_system.py",
+  "examples": [
+   {
+    "input": "uf = UnionFind(5); uf.connected(0, 1)",
+    "output": "False"
+   },
+   {
+    "input": "uf = UnionFind(5); uf.union(0, 1)",
+    "output": "True"
+   },
+   {
+    "input": "uf = UnionFind(5); uf.union(0, 1); uf.connected(0, 1)",
+    "output": "True"
+   },
+   {
+    "input": "uf = UnionFind(5); uf.union(0, 1); uf.union(1, 2); uf.connected(0, 2)",
+    "output": "True"
+   },
+   {
+    "input": "uf = UnionFind(5); uf.union(0, 1); uf.union(0, 1)",
+    "output": "False"
+   },
+   {
+    "input": "uf = UnionFind(3); uf.union(0, 1); uf.union(1, 2); uf.find(0) == uf.find(2)",
+    "output": "True"
+   }
+  ]
+ },
+ {
+  "name": "cache_keeper",
+  "file": "cache_keeper.py",
+  "examples": [
+   {
+    "input": "c = CacheKeeper(2); c.put(1, 1); c.put(2, 2); c.get(1)",
+    "output": "1"
+   },
+   {
+    "input": "c = CacheKeeper(2); c.put(1, 1); c.put(2, 2); c.put(3, 3); c.get(2)",
+    "output": "-1"
+   },
+   {
+    "input": "c = CacheKeeper(2); c.put(1, 1); c.put(2, 2); c.get(1); c.put(3, 3); c.get(2)",
+    "output": "-1"
+   },
+   {
+    "input": "c = CacheKeeper(2); c.put(1, 1); c.put(2, 2); c.get(1); c.put(3, 3); c.get(1)",
+    "output": "1"
+   }
+  ]
+ },
+ {
+  "name": "min_heap",
+  "file": "min_heap.py",
+  "examples": [
+   {
+    "input": "h = MinHeap(); h.push(5); h.push(3); h.push(8); h.peek()",
+    "output": "3"
+   },
+   {
+    "input": "h = MinHeap(); h.push(5); h.push(3); h.push(8); h.pop()",
+    "output": "3"
+   },
+   {
+    "input": "h = MinHeap(); h.push(5); h.push(3); h.push(8); h.pop(); h.peek()",
+    "output": "5"
+   },
+   {
+    "input": "h = MinHeap(); h.push(5); h.push(3); h.push(8); h.size()",
+    "output": "3"
+   },
+   {
+    "input": "h = MinHeap(); h.pop()",
+    "output": "None"
+   }
+  ]
+ },
+ {
+  "name": "trie_autocomplete",
+  "file": "trie_autocomplete.py",
+  "examples": [
+   {
+    "input": "trie_autocomplete([\"apple\", \"app\", \"apricot\", \"banana\"], \"app\")",
+    "output": "[\"app\", \"apple\"]"
+   },
+   {
+    "input": "trie_autocomplete([\"apple\", \"app\", \"apricot\", \"banana\"], \"ban\")",
+    "output": "[\"banana\"]"
+   },
+   {
+    "input": "trie_autocomplete([\"hello\", \"world\", \"help\", \"heap\"], \"he\")",
+    "output": "[\"heap\", \"hello\", \"help\"]"
+   },
+   {
+    "input": "trie_autocomplete([\"test\"], \"xyz\")",
+    "output": "[]"
+   },
+   {
+    "input": "trie_autocomplete([\"cat\", \"car\", \"card\", \"care\"], \"car\")",
+    "output": "[\"car\", \"card\", \"care\"]"
+   },
+   {
+    "input": "trie_autocomplete([], \"test\")",
+    "output": "[]"
+   },
+   {
+    "input": "trie_autocomplete([\"a\", \"ab\", \"abc\"], \"\")",
+    "output": "[\"a\", \"ab\", \"abc\"]"
+   }
+  ]
+ }
+]
