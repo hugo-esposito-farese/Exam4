@@ -1,5 +1,5 @@
-import os, random, sys, unittest
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+import random, unittest
+import common  # noqa: F401
 from union_find_system import UnionFind
 
 
@@ -65,9 +65,9 @@ class T(unittest.TestCase):
 
     def test_path_compression(self):
         uf = UnionFind(10)
-        uf.p = [0] + list(range(9))  # chaîne 9->8->...->0
+        uf.parent = [0] + list(range(9))  # chaîne 9->8->...->0
         uf.find(9)
-        self.assertTrue(all(uf.p[i] == 0 for i in range(1, 10)))
+        self.assertTrue(all(uf.parent[i] == 0 for i in range(1, 10)))
 
     def test_rank_balanced(self):
         n = 1 << 10
@@ -77,7 +77,7 @@ class T(unittest.TestCase):
             for i in range(0, n, 2 * s):
                 uf.union(i, i + s)
             s *= 2
-        depth = lambda x: 0 if uf.p[x] == x else 1 + depth(uf.p[x])
+        depth = lambda x: 0 if uf.parent[x] == x else 1 + depth(uf.parent[x])
         self.assertLessEqual(max(depth(i) for i in range(n)), 10)
 
     def test_large_chain_no_recursion_error(self):

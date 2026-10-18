@@ -1,5 +1,5 @@
-import os, random, sys, unittest
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+import random, unittest
+import common  # noqa: F401
 from trie_autocomplete import trie_autocomplete as f
 
 
@@ -86,3 +86,9 @@ class T(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Extra(unittest.TestCase):
+    def test_very_long_word(self):  # pas de RecursionError
+        w = "a" * 5000
+        self.assertEqual(f([w, w + "b", "b"], "a"), [w, w + "b"])

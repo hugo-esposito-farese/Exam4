@@ -12,10 +12,11 @@ def trie_autocomplete(words: list[str], prefix: str) -> list[str]:
             return []
         n = n[c]
 
-    def walk(n, s):
-        res = [s] if "" in n else []
-        for c in sorted(k for k in n if k):
-            res += walk(n[c], s + c)
-        return res
-
-    return walk(n, prefix)
+    res, stack = [], [(n, prefix)]
+    while stack:
+        n, s = stack.pop()
+        if "" in n:
+            res.append(s)
+        for c in sorted((k for k in n if k), reverse=True):
+            stack.append((n[c], s + c))
+    return res

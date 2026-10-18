@@ -1,21 +1,22 @@
 class UnionFind:
     def __init__(self, n: int):
-        self.p = list(range(n))
-        self.r = [0] * n
+        self.parent = list(range(n))
+        self.rank = [0] * n
 
     def find(self, x: int) -> int:
-        if self.p[x] != x:
-            self.p[x] = self.find(self.p[x])
-        return self.p[x]
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
 
     def union(self, x: int, y: int) -> bool:
         x, y = self.find(x), self.find(y)
         if x == y:
             return False
-        if self.r[x] < self.r[y]:
+        if self.rank[x] < self.rank[y]:
             x, y = y, x
-        self.p[y] = x
-        self.r[x] += self.r[x] == self.r[y]
+        self.parent[y] = x
+        if self.rank[x] == self.rank[y]:
+            self.rank[x] += 1
         return True
 
     def connected(self, x: int, y: int) -> bool:
