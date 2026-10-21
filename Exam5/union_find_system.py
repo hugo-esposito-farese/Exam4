@@ -15,8 +15,7 @@ class UnionFind:
         if self.rank[x] < self.rank[y]:
             x, y = y, x
         self.parent[y] = x
-        if self.rank[x] == self.rank[y]:
-            self.rank[x] += 1
+        self.rank[x] += self.rank[x] == self.rank[y]
         return True
 
     def connected(self, x: int, y: int) -> bool:
