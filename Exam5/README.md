@@ -1,6 +1,6 @@
 # Exam5 – Rank 06 Python (rank06.42exam.net)
 
-8 solutions (un fichier par sujet, nom exact du site). Tests : `./run_tests.sh` (stdlib `unittest` uniquement).
+8 solutions rank06 (un fichier par sujet, nom exact du site) + `bridge_finder.py` (sujet donné à part, hors site). Tests : `./run_tests.sh` (stdlib `unittest` uniquement).
 
 - `tests/test_00_official_examples.py` rejoue mot pour mot les exemples du site (`tests/rank06_examples.json`).
 - Chaque exo a aussi des tests aléatoires contre une implémentation naïve, plus les cas limites et les gros volumes.
