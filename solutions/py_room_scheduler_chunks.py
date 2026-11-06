@@ -21,7 +21,6 @@ def py_room_scheduler(meetings: list[list[int]]) -> dict[str, Any]:
 
 OR
 
-
 from typing import Any
 
 def py_room_scheduler(meetings: list[list[int]]) -> dict[str, Any]:
@@ -30,17 +29,14 @@ def py_room_scheduler(meetings: list[list[int]]) -> dict[str, Any]:
 
     for meeting in sorted(meetings):
         placed = False
-
         for room in rooms.values():
             if room[-1][1] <= meeting[0]:
                 room.append(meeting)
                 placed = True
                 break
-
         if not placed:
             rooms[count] = [meeting]
             count += 1
-
     return {"rooms_needed": count, "room_assignments": rooms}
 
 def main():
@@ -49,7 +45,6 @@ def main():
     result = py_room_scheduler(meetings)
 
     print(result)
-
 
 if __name__ == "__main__":
     main()
