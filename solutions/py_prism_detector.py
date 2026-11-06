@@ -13,3 +13,37 @@ def prism_detector(grid: list[str], pattern: str):
                        and grid[y + dy * i][x + dx * i] == c for i, c in enumerate(pattern)):
                     res.append((x, y, code))
     return res
+
+
+OR
+
+
+
+D = {
+    (1, 0): "H",
+    (-1, 0): "H-",
+    (0, 1): "V",
+    (0, -1): "V-",
+    (1, 1): "D1",
+    (-1, -1): "D1-",
+    (-1, 1): "D2",
+    (1, -1): "D2-"
+}
+
+
+def prism_detector(grid: list[str], pattern: str):
+    position = {}
+
+    for y, row in enumerate(grid):
+        for x, char in enumerate(row):
+            position[(x, y)] = char
+
+    return [
+        (x, y, code)
+        for x, y in position
+        for (dx, dy), code in D.items()
+        if pattern and all(
+            position.get((x + i * dx, y + i * dy)) == char
+            for i, char in enumerate(pattern)
+        )
+    ]
