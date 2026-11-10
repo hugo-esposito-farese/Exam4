@@ -1,6 +1,5 @@
 import heapq
 
-
 def task_order(n: int, prereqs: list[list[int]]) -> list[int]:
     nxt = [[] for _ in range(n)]
     deg = [0] * n
