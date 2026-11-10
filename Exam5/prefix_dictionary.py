@@ -6,7 +6,7 @@ class PrefixDictionary:
         n = self.root
         for c in word:
             n = n.setdefault(c, {})
-        n["$"] = {}  # fin de mot
+        n["$"] = {}
 
     def _node(self, s):
         n = self.root
@@ -21,4 +21,4 @@ class PrefixDictionary:
         return n is not None and "$" in n
 
     def starts_with(self, prefix: str) -> bool:
-        return bool(self._node(prefix))  # noeud existant et non vide
+        return bool(self._node(prefix))
